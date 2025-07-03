@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "board.h"
 
 int main() {
     const int windowSize = 800;
