@@ -17,7 +17,8 @@ public:
 	std::optional<Square> getSelectedSquare() const;
 	void clearSelection();
 	static Square getSquareFromMouse(int mouseX, int mouseY, int squareSize);
-
+	bool tryMove(int targetRow, int targetColumn, Board& Board);
+	
 private:
 	std::optional<Square> selectedSquare;
 };

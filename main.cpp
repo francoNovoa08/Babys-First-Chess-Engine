@@ -31,15 +31,22 @@ int main() {
             }
 
 			// Handle mouse click events
-            if (event.type = sf::Event::MouseButtonPressed) {
+            if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.mouseButton.button == sf::Mouse::Left) {
 					int mouseX = event.mouseButton.x;
 					int mouseY = event.mouseButton.y;
 
                     Square clicked = Game::getSquareFromMouse(mouseX, mouseY, squareSize);
-					game.selectSquare(clicked.row, clicked.column);
 
-					std::cout << "Selected square: " << clicked.row << ", " << clicked.column << "\n";
+                    if (game.getSelectedSquare().has_value()) {
+                        // Try move
+                        if (!game.tryMove(clicked.row, clicked.column, board)) {
+							game.selectSquare(clicked.row, clicked.column);
+						}
+                    }
+                    else {
+						game.selectSquare(clicked.row, clicked.column);
+                    }
                 }
             }
         }
