@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\pieces">
+      <UniqueIdentifier>{bda8a0de-1149-495a-a5af-74c5e57a0c25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,10 +24,54 @@
     <ClCompile Include="Board.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PieceSprites.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="board.h">
+    <ClInclude Include="Board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PieceSprites.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_rook.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_bishop.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_king.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_knight.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_pawn.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_queen.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_rook.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_bishop.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_king.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_knight.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_pawn.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_queen.png">
+      <Filter>Resource Files\pieces</Filter>
+    </Image>
   </ItemGroup>
 </Project>
