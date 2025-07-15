@@ -171,6 +171,11 @@ bool Board::isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Co
 			return true;
 		}
 		break;
+	case PieceType::KING:
+		if (std::abs(destinationRow) <= 1 && std::abs(destinationColumn) <= 1) {
+			return true;
+		}
+		break;
 
 	default:
 		return false;
