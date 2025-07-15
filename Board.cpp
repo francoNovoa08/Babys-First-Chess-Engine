@@ -125,6 +125,17 @@ bool Board::isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Co
 			return true;
 		}
 		break;
+	case PieceType::BISHOP:
+		if (std::abs(destinationRow) == std::abs(destinationColumn)) {
+			int rowStep = (destinationRow > 0) ? 1 : -1;
+			int colStep = (destinationColumn > 0) ? 1 : -1;
+			for (int i = 1; i < std::abs(destinationRow); ++i) {
+				if (getPiece(fromRow + i * rowStep, fromColumn + i * colStep).type != PieceType::NONE)
+					return false;
+			}
+			return true;
+		}
+		break;
 	default:
 		return false;
 	}
