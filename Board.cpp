@@ -68,3 +68,61 @@ Piece Board::getPiece(int row, int column) const {
 void Board::setPiece(int row, int column, Piece piece) {
 	board[row][column] = piece;
 }
+
+bool Board::isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Colour turn) const {
+	Piece piece = getPiece(fromRow, fromColumn);
+
+	if (piece.colour != turn) {
+		return false;
+	}
+
+	Piece destinationPiece = getPiece(toRow, toColumn);
+
+	// Can't capture piece from same colour
+	if (destinationPiece.colour == turn) {
+		return false;
+	}
+
+	int destinationRow = toRow - fromRow;
+	int destinationColumn = toColumn - fromColumn;
+
+	// TODO: Add other piece rules
+	switch (piece.type) {
+	case PieceType::PAWN:
+		if (piece.colour == Colour::WHITE) {
+			// Move 1 square forward
+			if (destinationColumn == 0 && destinationRow == 1 && destinationPiece.type == PieceType::NONE)
+				return true;
+
+			// Move 2 squares from start
+			if (destinationColumn == 0 && destinationRow == 2 && fromRow == 1 &&
+				destinationPiece.type == PieceType::NONE &&
+				getPiece(fromRow + 1, fromColumn).type == PieceType::NONE)
+				return true;
+
+			// Capture
+			if (std::abs(destinationColumn) == 1 && destinationRow == 1 &&
+				destinationPiece.colour == Colour::BLACK)
+				return true;
+		}
+		else {
+			if (destinationColumn == 0 && destinationRow == -1 && destinationPiece.type == PieceType::NONE)
+				return true;
+
+			if (destinationColumn == 0 && destinationRow == -2 && fromRow == 6 &&
+				destinationPiece.type == PieceType::NONE &&
+				getPiece(fromRow - 1, fromColumn).type == PieceType::NONE)
+				return true;
+
+			if (std::abs(destinationColumn) == 1 && destinationRow == -1 &&
+				destinationPiece.colour == Colour::WHITE)
+				return true;
+		}
+		break;
+	default:
+		return false;
+	}
+
+
+	return false;
+}

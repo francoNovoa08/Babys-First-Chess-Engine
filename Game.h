@@ -21,6 +21,7 @@ public:
 	
 private:
 	std::optional<Square> selectedSquare;
+	Colour currentTurn = Colour::WHITE;
 };
 
 #endif // GAME_H

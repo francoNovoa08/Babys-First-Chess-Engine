@@ -29,12 +29,18 @@ bool Game::tryMove(int targetRow, int targetColumn, Board& board) {
 	Square from = selectedSquare.value();
 	Piece piece = board.getPiece(from.row, from.column);
 
-	if (piece.type == PieceType::NONE) {
-		return false; // No piece at the selected square
+	if (piece.type == PieceType::NONE || piece.colour != currentTurn) {
+		return false; 
+	}
+
+	if (!board.isMoveLegal(from.row, from.column, targetRow, targetColumn, currentTurn)) {
+		return false;
 	}
 
 	board.setPiece(targetRow, targetColumn, piece);
 	board.setPiece(from.row, from.column, Piece{});
+
+	currentTurn = (currentTurn == Colour::WHITE) ? Colour::BLACK : Colour::WHITE;
 
 	clearSelection();
 	return true;
