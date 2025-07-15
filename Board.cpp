@@ -119,10 +119,14 @@ bool Board::isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Co
 				return true;
 		}
 		break;
+	case PieceType::KNIGHT:
+		if ((std::abs(destinationRow) == 2 && std::abs(destinationColumn) == 1) ||
+			(std::abs(destinationRow) == 1 && std::abs(destinationColumn) == 2)) {
+			return true;
+		}
+		break;
 	default:
 		return false;
 	}
-
-
 	return false;
 }
