@@ -66,6 +66,27 @@ Piece Board::getPiece(int row, int column) const {
 }
 
 void Board::setPiece(int row, int column, Piece piece) {
+	Piece oldPiece = board[row][column];
+
+	if (oldPiece.type == PieceType::KING) {
+		if (oldPiece.colour == Colour::WHITE) {
+			whiteKingMoved = true;
+		}
+		else {
+			blackKingMoved = true;
+		}
+		if (oldPiece.type == PieceType::ROOK) {
+			if (oldPiece.colour == Colour::WHITE) {
+				if (row == 0 && column == 0) whiteQueenRookMoved = true;
+				if (row == 0 && column == 7) whiteKingRookMoved = true;
+			}
+			else {
+				if (row == 7 && column == 0) blackQueenRookMoved = true;
+				if (row == 7 && column == 7) blackKingRookMoved = true;
+			}
+		}
+	}
+	
 	board[row][column] = piece;
 }
 
@@ -79,6 +100,40 @@ void Board::promotePawn(int row, int column) {
 	}
 }
 
+// TODO: Add check logic in castling
+bool Board::isCastlingMove(int fromRow, int fromColumn, int toRow, int toColumn, Colour turn) const {
+	if (getPiece(fromRow, fromColumn).type != PieceType::KING) return false;
+	if (turn == Colour::WHITE && whiteKingMoved) return false;
+	if (turn == Colour::BLACK && blackKingMoved) return false;
+
+	int row = (turn == Colour::WHITE) ? 0 : 7;
+
+	// Kingside
+	if (fromColumn == 4 && toColumn == 6 && fromRow == row && toRow == row) {
+		if (turn == Colour::WHITE && whiteKingRookMoved) return false;
+		if (turn == Colour::BLACK && blackKingRookMoved) return false;
+
+		if (getPiece(row, 5).type != PieceType::NONE) return false;
+		if (getPiece(row, 6).type != PieceType::NONE) return false;
+
+		return true;
+	}
+
+	// Queenside
+	if (fromColumn == 4 && toColumn == 2 && fromRow == row && toRow == row) {
+		if (turn == Colour::WHITE && whiteQueenRookMoved) return false;
+		if (turn == Colour::BLACK && blackQueenRookMoved) return false;
+
+		if (getPiece(row, 1).type != PieceType::NONE) return false;
+		if (getPiece(row, 2).type != PieceType::NONE) return false;
+		if (getPiece(row, 3).type != PieceType::NONE) return false;
+
+		return true;
+	}
+
+	return false;
+}
+
 bool Board::isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Colour turn) const {
 	Piece piece = getPiece(fromRow, fromColumn);
 
@@ -88,7 +143,6 @@ bool Board::isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Co
 
 	Piece destinationPiece = getPiece(toRow, toColumn);
 
-	// Can't capture piece from same colour
 	if (destinationPiece.colour == turn) {
 		return false;
 	}
@@ -185,6 +239,11 @@ bool Board::isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Co
 		if (std::abs(destinationRow) <= 1 && std::abs(destinationColumn) <= 1) {
 			return true;
 		}
+
+		if (isCastlingMove(fromRow, fromColumn, toRow, toColumn, turn)) {
+			return true;
+		}
+
 		break;
 
 	default:
