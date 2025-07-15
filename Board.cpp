@@ -69,6 +69,16 @@ void Board::setPiece(int row, int column, Piece piece) {
 	board[row][column] = piece;
 }
 
+void Board::promotePawn(int row, int column) {
+	Piece& piece = board[row][column];
+	if (piece.type == PieceType::PAWN) {
+		if ((piece.colour == Colour::WHITE && row == 7) ||
+			(piece.colour == Colour::BLACK && row == 1)) {
+			piece.type = PieceType::QUEEN; 
+		}
+	}
+}
+
 bool Board::isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Colour turn) const {
 	Piece piece = getPiece(fromRow, fromColumn);
 

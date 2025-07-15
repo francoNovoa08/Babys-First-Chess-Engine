@@ -20,6 +20,7 @@ public:
 	Piece getPiece(int row, int column) const;
 	void setPiece(int row, int column, Piece piece);
 	bool isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Colour turn) const;
+	void promotePawn(int row, int column);
 
 private:
 	std::array<std::array<Piece, 8>, 8> board;

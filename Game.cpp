@@ -39,6 +39,7 @@ bool Game::tryMove(int targetRow, int targetColumn, Board& board) {
 
 	board.setPiece(targetRow, targetColumn, piece);
 	board.setPiece(from.row, from.column, Piece{});
+	board.promotePawn(targetRow, targetColumn);
 
 	currentTurn = (currentTurn == Colour::WHITE) ? Colour::BLACK : Colour::WHITE;
 
