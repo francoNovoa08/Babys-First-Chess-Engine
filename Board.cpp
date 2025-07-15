@@ -136,6 +136,18 @@ bool Board::isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Co
 			return true;
 		}
 		break;
+	case PieceType::ROOK:
+		if (destinationRow == 0 || destinationColumn == 0) {
+			int rowDir = (destinationRow == 0) ? 0 : (destinationRow > 0 ? 1 : -1);
+			int colDir = (destinationColumn == 0) ? 0 : (destinationColumn > 0 ? 1 : -1);
+			int steps = std::max(std::abs(destinationRow), std::abs(destinationColumn));
+			for (int i = 1; i < steps; ++i) {
+				if (getPiece(fromRow + i * rowDir, fromColumn + i * colDir).type != PieceType::NONE)
+					return false;
+			}
+			return true;
+		}
+		break;
 	default:
 		return false;
 	}
