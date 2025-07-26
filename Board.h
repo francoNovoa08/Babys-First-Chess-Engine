@@ -10,6 +10,7 @@ struct Piece {
 };
 
 #include <array>
+#include "Square.h"
 
 class Board {
 public:
@@ -24,10 +25,12 @@ public:
 	void initialise();
 
 	Piece getPiece(int row, int column) const;
+	Square findKing(Colour colour) const;
 	void setPiece(int row, int column, Piece piece);
 	bool isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Colour turn) const;
 	void promotePawn(int row, int column);
 	bool isCastlingMove(int fromRow, int fromColumn, int toRow, int toColumn, Colour turn) const;
+	bool isSquareAttacked(int row, int column, Colour byColour) const;
 
 private:
 	std::array<std::array<Piece, 8>, 8> board;

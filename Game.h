@@ -2,12 +2,10 @@
 #define GAME_H
 
 #include "Board.h"
+#include "Square.h"
 #include <optional>
 
-struct Square {
-	int row;
-	int column;
-};
+class Board;
 
 class Game {
 public:
@@ -17,7 +15,7 @@ public:
 	std::optional<Square> getSelectedSquare() const;
 	void clearSelection();
 	static Square getSquareFromMouse(int mouseX, int mouseY, int squareSize);
-	bool tryMove(int targetRow, int targetColumn, Board& Board);
+	bool tryMove(int targetRow, int targetColumn, Board& board);
 	
 private:
 	std::optional<Square> selectedSquare;

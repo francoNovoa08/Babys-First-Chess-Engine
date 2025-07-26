@@ -1,4 +1,6 @@
-#include "Game.h"
+﻿#include "Game.h"
+#include "Board.h"
+#include <iostream>
 
 Game::Game() : selectedSquare(std::nullopt) {}
 
@@ -36,27 +38,35 @@ bool Game::tryMove(int targetRow, int targetColumn, Board& board) {
 	if (!board.isMoveLegal(from.row, from.column, targetRow, targetColumn, currentTurn)) {
 		return false;
 	}
-	
-	// Check castling
-	if (piece.type == PieceType::KING && std::abs(targetColumn - from.column) == 2) {
-		int row = from.row;
 
-		if (targetColumn == 6) { // Kingside
-			Piece rook = board.getPiece(row, 7);
-			board.setPiece(row, 5, rook);
-			board.setPiece(row, 7, Piece{});
-		}
-		else if (targetColumn == 2) { // Queenside
-			Piece rook = board.getPiece(row, 0);
-			board.setPiece(row, 3, rook);
-			board.setPiece(row, 0, Piece{});
-		}
-	}
+	std::cout << "Selected: " << from.row << "," << from.column
+		<< " → Target: " << targetRow << "," << targetColumn << "\n";
+ 
+
+	Piece captured = board.getPiece(targetRow, targetColumn);
 
 	board.setPiece(targetRow, targetColumn, piece);
 	board.setPiece(from.row, from.column, Piece{});
-	board.promotePawn(targetRow, targetColumn);
+	std::cout << "Moved piece: " << (int)piece.type
+		<< " from (" << from.row << "," << from.column << ")"
+		<< " to (" << targetRow << "," << targetColumn << ")\n";
 
+	Square kingSquare;
+	if (piece.type == PieceType::KING) {
+		kingSquare = Square{ targetRow, targetColumn };
+	}
+	else {
+		kingSquare = board.findKing(currentTurn);
+	}
+
+	if (board.isSquareAttacked(kingSquare.row, kingSquare.column,
+		currentTurn == Colour::WHITE ? Colour::BLACK : Colour::WHITE)) {
+		board.setPiece(from.row, from.column, piece);
+		board.setPiece(targetRow, targetColumn, captured);
+		return false;
+	}
+
+	board.promotePawn(targetRow, targetColumn);
 	currentTurn = (currentTurn == Colour::WHITE) ? Colour::BLACK : Colour::WHITE;
 
 	clearSelection();

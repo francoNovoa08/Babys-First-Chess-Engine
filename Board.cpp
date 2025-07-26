@@ -1,4 +1,5 @@
 #include "Board.h"
+#include "Game.h"
 
 Board::Board() {
 	initialise();
@@ -250,4 +251,32 @@ bool Board::isMoveLegal(int fromRow, int fromColumn, int toRow, int toColumn, Co
 		return false;
 	}
 	return false;
+}
+
+Square Board::findKing(Colour colour) const {
+	for (int row = 0; row < 8; row++) {
+		for (int column = 0; column < 8; column++) {
+			Piece piece = getPiece(row, column);
+			if (piece.type == PieceType::KING && piece.colour == colour) {
+				return Square { row, column };
+			}
+		}
+	}
+
+	return Square{ -1, -1 }; // King not found
+}
+
+bool Board::isSquareAttacked(int row, int column, Colour byColour) const {
+	for (int attackerRow = 0; attackerRow < 8; attackerRow++) {
+		for (int attackerColumn = 0; attackerColumn < 8; attackerColumn++) {
+			Piece attacker = getPiece(attackerRow, attackerColumn);
+
+			if (attacker.colour != byColour) continue;
+
+			if (isMoveLegal(attackerRow, attackerColumn, row, column, byColour)) {
+				return true; // Square is attacked
+			}
+		}
+	}
+	return false; // Square is not attacked
 }
