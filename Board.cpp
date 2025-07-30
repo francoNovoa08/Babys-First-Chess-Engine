@@ -101,13 +101,13 @@ void Board::promotePawn(int row, int column) {
 	}
 }
 
-// TODO: Add check logic in castling
 bool Board::isCastlingMove(int fromRow, int fromColumn, int toRow, int toColumn, Colour turn) const {
 	if (getPiece(fromRow, fromColumn).type != PieceType::KING) return false;
 	if (turn == Colour::WHITE && whiteKingMoved) return false;
 	if (turn == Colour::BLACK && blackKingMoved) return false;
 
 	int row = (turn == Colour::WHITE) ? 0 : 7;
+	Colour opponent = (turn == Colour::WHITE) ? Colour::BLACK : Colour::WHITE;
 
 	// Kingside
 	if (fromColumn == 4 && toColumn == 6 && fromRow == row && toRow == row) {
@@ -116,6 +116,10 @@ bool Board::isCastlingMove(int fromRow, int fromColumn, int toRow, int toColumn,
 
 		if (getPiece(row, 5).type != PieceType::NONE) return false;
 		if (getPiece(row, 6).type != PieceType::NONE) return false;
+
+		if (isSquareAttacked(row, 4, opponent)) return false; 
+		if (isSquareAttacked(row, 5, opponent)) return false; 
+		if (isSquareAttacked(row, 6, opponent)) return false; 
 
 		return true;
 	}
@@ -128,6 +132,10 @@ bool Board::isCastlingMove(int fromRow, int fromColumn, int toRow, int toColumn,
 		if (getPiece(row, 1).type != PieceType::NONE) return false;
 		if (getPiece(row, 2).type != PieceType::NONE) return false;
 		if (getPiece(row, 3).type != PieceType::NONE) return false;
+
+		if (isSquareAttacked(row, 4, opponent)) return false;
+		if (isSquareAttacked(row, 3, opponent)) return false; 
+		if (isSquareAttacked(row, 2, opponent)) return false; 
 
 		return true;
 	}
