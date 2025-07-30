@@ -32,7 +32,7 @@ bool Game::tryMove(int targetRow, int targetColumn, Board& board) {
 	Piece piece = board.getPiece(from.row, from.column);
 
 	if (piece.type == PieceType::NONE || piece.colour != currentTurn) {
-		return false; 
+		return false;
 	}
 
 	if (!board.isMoveLegal(from.row, from.column, targetRow, targetColumn, currentTurn)) {
@@ -41,12 +41,28 @@ bool Game::tryMove(int targetRow, int targetColumn, Board& board) {
 
 	std::cout << "Selected: " << from.row << "," << from.column
 		<< " → Target: " << targetRow << "," << targetColumn << "\n";
- 
+
+	// Handle castling rook movement BEFORE we check for check conditions
+	if (piece.type == PieceType::KING && board.isCastlingMove(from.row, from.column, targetRow, targetColumn, currentTurn)) {
+		// Move the rook manually based on side
+		int row = from.row;
+		if (targetColumn == 6) {
+			// Kingside castling
+			board.setPiece(row, 5, { PieceType::ROOK, currentTurn }); // f-file
+			board.setPiece(row, 7, { PieceType::NONE, Colour::NONE }); // clear h-file
+		}
+		else if (targetColumn == 2) {
+			// Queenside castling
+			board.setPiece(row, 3, { PieceType::ROOK, currentTurn }); // d-file
+			board.setPiece(row, 0, { PieceType::NONE, Colour::NONE }); // clear a-file
+		}
+	}
 
 	Piece captured = board.getPiece(targetRow, targetColumn);
 
 	board.setPiece(targetRow, targetColumn, piece);
 	board.setPiece(from.row, from.column, Piece{});
+
 	std::cout << "Moved piece: " << (int)piece.type
 		<< " from (" << from.row << "," << from.column << ")"
 		<< " to (" << targetRow << "," << targetColumn << ")\n";
@@ -61,8 +77,22 @@ bool Game::tryMove(int targetRow, int targetColumn, Board& board) {
 
 	if (board.isSquareAttacked(kingSquare.row, kingSquare.column,
 		currentTurn == Colour::WHITE ? Colour::BLACK : Colour::WHITE)) {
+		// Undo move
 		board.setPiece(from.row, from.column, piece);
 		board.setPiece(targetRow, targetColumn, captured);
+
+		// Undo rook move if castling
+		if (piece.type == PieceType::KING && board.isCastlingMove(from.row, from.column, targetRow, targetColumn, currentTurn)) {
+			int row = from.row;
+			if (targetColumn == 6) {
+				board.setPiece(row, 7, { PieceType::ROOK, currentTurn }); // h-file
+				board.setPiece(row, 5, { PieceType::NONE, Colour::NONE }); // f-file
+			}
+			else if (targetColumn == 2) {
+				board.setPiece(row, 0, { PieceType::ROOK, currentTurn }); // a-file
+				board.setPiece(row, 3, { PieceType::NONE, Colour::NONE }); // d-file
+			}
+		}
 		return false;
 	}
 

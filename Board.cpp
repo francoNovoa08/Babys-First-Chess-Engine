@@ -76,15 +76,15 @@ void Board::setPiece(int row, int column, Piece piece) {
 		else {
 			blackKingMoved = true;
 		}
-		if (oldPiece.type == PieceType::ROOK) {
-			if (oldPiece.colour == Colour::WHITE) {
-				if (row == 0 && column == 0) whiteQueenRookMoved = true;
-				if (row == 0 && column == 7) whiteKingRookMoved = true;
-			}
-			else {
-				if (row == 7 && column == 0) blackQueenRookMoved = true;
-				if (row == 7 && column == 7) blackKingRookMoved = true;
-			}
+	}
+	if (oldPiece.type == PieceType::ROOK) {
+		if (oldPiece.colour == Colour::WHITE) {
+			if (row == 0 && column == 0) whiteQueenRookMoved = true;
+			if (row == 0 && column == 7) whiteKingRookMoved = true;
+		}
+		else {
+			if (row == 7 && column == 0) blackQueenRookMoved = true;
+			if (row == 7 && column == 7) blackKingRookMoved = true;
 		}
 	}
 	
