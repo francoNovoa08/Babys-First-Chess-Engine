@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36221.1 d17.14
+VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Chess Engine", "Chess Engine.vcxproj", "{19309455-DBFE-45DF-87C8-BFE2EF3BC2D5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Chess Engine Tests", "..\Chess Engine Tests\Chess Engine Tests.vcxproj", "{DC02BAD1-95DB-4992-8F5E-CB77F8DA25A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,14 @@ Global
 		{19309455-DBFE-45DF-87C8-BFE2EF3BC2D5}.Release|x64.Build.0 = Release|x64
 		{19309455-DBFE-45DF-87C8-BFE2EF3BC2D5}.Release|x86.ActiveCfg = Release|Win32
 		{19309455-DBFE-45DF-87C8-BFE2EF3BC2D5}.Release|x86.Build.0 = Release|Win32
+		{DC02BAD1-95DB-4992-8F5E-CB77F8DA25A0}.Debug|x64.ActiveCfg = Debug|x64
+		{DC02BAD1-95DB-4992-8F5E-CB77F8DA25A0}.Debug|x64.Build.0 = Debug|x64
+		{DC02BAD1-95DB-4992-8F5E-CB77F8DA25A0}.Debug|x86.ActiveCfg = Debug|Win32
+		{DC02BAD1-95DB-4992-8F5E-CB77F8DA25A0}.Debug|x86.Build.0 = Debug|Win32
+		{DC02BAD1-95DB-4992-8F5E-CB77F8DA25A0}.Release|x64.ActiveCfg = Release|x64
+		{DC02BAD1-95DB-4992-8F5E-CB77F8DA25A0}.Release|x64.Build.0 = Release|x64
+		{DC02BAD1-95DB-4992-8F5E-CB77F8DA25A0}.Release|x86.ActiveCfg = Release|Win32
+		{DC02BAD1-95DB-4992-8F5E-CB77F8DA25A0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
