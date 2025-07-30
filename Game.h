@@ -2,8 +2,8 @@
 #define GAME_H
 
 #include "Board.h"
-#include "Square.h"
 #include <optional>
+#include "Square.h"
 
 class Board;
 
