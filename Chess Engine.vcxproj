@@ -27,7 +27,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -112,14 +112,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SFML-2.6.2\include
+</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files\SFML-2.5.1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);sfml-window-d.lib;sfml-graphics-d.lib;sfml-system-d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SFML-2.6.2\lib
+</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib
+</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -134,14 +137,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SFML-2.6.2\include
+</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files\SFML-2.5.1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);sfml-window.lib;sfml-graphics.lib;sfml-system.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SFML-2.6.2\lib
+</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -161,18 +166,18 @@
     <ClInclude Include="Square.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_bishop.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_king.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_knight.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_pawn.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_queen.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_rook.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_bishop.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_king.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_knight.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_pawn.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_queen.png" />
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_rook.png" />
+    <Image Include="Resources\pieces\black_bishop.png" />
+    <Image Include="Resources\pieces\black_king.png" />
+    <Image Include="Resources\pieces\black_knight.png" />
+    <Image Include="Resources\pieces\black_pawn.png" />
+    <Image Include="Resources\pieces\black_queen.png" />
+    <Image Include="Resources\pieces\black_rook.png" />
+    <Image Include="Resources\pieces\white_bishop.png" />
+    <Image Include="Resources\pieces\white_king.png" />
+    <Image Include="Resources\pieces\white_knight.png" />
+    <Image Include="Resources\pieces\white_pawn.png" />
+    <Image Include="Resources\pieces\white_queen.png" />
+    <Image Include="Resources\pieces\white_rook.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -46,40 +46,40 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_rook.png">
+    <Image Include="Resources\pieces\black_rook.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_bishop.png">
+    <Image Include="Resources\pieces\white_bishop.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_king.png">
+    <Image Include="Resources\pieces\white_king.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_knight.png">
+    <Image Include="Resources\pieces\white_knight.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_pawn.png">
+    <Image Include="Resources\pieces\white_pawn.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_queen.png">
+    <Image Include="Resources\pieces\white_queen.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\white_rook.png">
+    <Image Include="Resources\pieces\white_rook.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_bishop.png">
+    <Image Include="Resources\pieces\black_bishop.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_king.png">
+    <Image Include="Resources\pieces\black_king.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_knight.png">
+    <Image Include="Resources\pieces\black_knight.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_pawn.png">
+    <Image Include="Resources\pieces\black_pawn.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\pieces-basic-png\black_queen.png">
+    <Image Include="Resources\pieces\black_queen.png">
       <Filter>Resource Files\pieces</Filter>
     </Image>
   </ItemGroup>
