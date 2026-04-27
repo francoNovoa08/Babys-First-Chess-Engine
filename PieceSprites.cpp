@@ -1,6 +1,7 @@
 #include "PieceSprites.h"
 #include <iostream>
 
+/*
 bool PieceSprites::loadTextures() {
 	const std::string folder = "resources/pieces/";
 	const std::string names[6] = {
@@ -47,29 +48,29 @@ const sf::Sprite& PieceSprites::getPiece(Piece piece) const {
 	static sf::Sprite emptySprite;
 
 	if (piece.type == PieceType::NONE) {
-		return emptySprite; 
+		return emptySprite;
 	}
 
 	std::string colour = (piece.colour == Colour::WHITE) ? "white_" : "black_";
 	std::string name;
 
 	switch (piece.type) {
-	case PieceType::PAWN: 			
+	case PieceType::PAWN:
 		name = "pawn";
 		break;
-	case PieceType::KNIGHT:			
+	case PieceType::KNIGHT:
 		name = "knight";
 		break;
-	case PieceType::BISHOP:			
+	case PieceType::BISHOP:
 		name = "bishop";
 		break;
-	case PieceType::ROOK:			
+	case PieceType::ROOK:
 		name = "rook";
 		break;
-	case PieceType::QUEEN:			
+	case PieceType::QUEEN:
 		name = "queen";
 		break;
-	case PieceType::KING:			
+	case PieceType::KING:
 		name = "king";
 		break;
 	default:
@@ -112,3 +113,4 @@ std::string PieceSprites::getKey(Piece piece) const {
 	}
 	return colour + name;
 }
+*/

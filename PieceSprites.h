@@ -1,8 +1,8 @@
+/*
 #ifndef PIECESPRITES_H
 #define PIECESPRITES_H
 
 #include <SFML/Graphics.hpp>
-#include "Board.h"
 #include <map>
 
 class PieceSprites {
@@ -19,3 +19,4 @@ private:
 
 
 #endif // PIECESPRITES_H
+*/

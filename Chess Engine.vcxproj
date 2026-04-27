@@ -154,16 +154,20 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Board.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="evaluate.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="movegen.cpp" />
     <ClCompile Include="PieceSprites.cpp" />
+    <ClCompile Include="position.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Board.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="bitboard.h" />
+    <ClInclude Include="evaluate.h" />
+    <ClInclude Include="movegen.h" />
     <ClInclude Include="PieceSprites.h" />
+    <ClInclude Include="position.h" />
     <ClInclude Include="Square.h" />
+    <ClInclude Include="types.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\pieces\black_bishop.png" />
