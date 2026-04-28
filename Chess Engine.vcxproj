@@ -155,17 +155,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="evaluate.cpp" />
+    <ClCompile Include="helpers.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="movegen.cpp" />
     <ClCompile Include="PieceSprites.cpp" />
     <ClCompile Include="position.cpp" />
+    <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="search.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitboard.h" />
     <ClInclude Include="evaluate.h" />
+    <ClInclude Include="helpers.h" />
     <ClInclude Include="movegen.h" />
     <ClInclude Include="PieceSprites.h" />
     <ClInclude Include="position.h" />
+    <ClInclude Include="renderer.h" />
+    <ClInclude Include="search.h" />
     <ClInclude Include="Square.h" />
     <ClInclude Include="types.h" />
   </ItemGroup>
