@@ -31,6 +31,12 @@ public:
 
 	bool stop = false;
 
+	void resetStop() { stop = false; };
+	bool isStopped() const { return stop; };
+	void resetTT() { memset(tt.get(), 0, sizeof(TTEntry) * TT_SIZE); };
+
+	SearchResult searchRoot(Position& pos, int depth);
+
 private:
 	uint64_t nodes = 0;
 
@@ -62,8 +68,5 @@ private:
 
 	void orderMoves(const Position& pos, MoveList& list, Move ttmove);
 
-	int negamax(Position& pos, int depth, int alpha, int beta,
-		uint64_t hash);
-
-	SearchResult searchRoot(Position& pos, int depth);
+	int negamax(Position& pos, int depth, int alpha, int beta, uint64_t hash);
 };

@@ -156,12 +156,17 @@
   <ItemGroup>
     <ClCompile Include="evaluate.cpp" />
     <ClCompile Include="helpers.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main_uci.cpp" />
+    <ClCompile Include="main_gui.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="movegen.cpp" />
     <ClCompile Include="PieceSprites.cpp" />
     <ClCompile Include="position.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="search.cpp" />
+    <ClCompile Include="uci.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitboard.h" />
@@ -174,6 +179,7 @@
     <ClInclude Include="search.h" />
     <ClInclude Include="Square.h" />
     <ClInclude Include="types.h" />
+    <ClInclude Include="uci.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\pieces\black_bishop.png" />

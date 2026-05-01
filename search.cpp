@@ -112,6 +112,7 @@ void Search::orderMoves(const Position& pos, MoveList& list,
 
 int Search::quiescence(Position& pos, int alpha, int beta,
     uint64_t hash) {
+    if (stop) return 0;
     nodes++;
 
     int standPat = evaluate(pos);
@@ -148,6 +149,7 @@ int Search::quiescence(Position& pos, int alpha, int beta,
 
 int Search::negamax(Position& pos, int depth, int alpha, int beta,
     uint64_t hash) {
+    if (stop) return 0;
     nodes++;
 
     if (depth == 0)
@@ -163,17 +165,17 @@ int Search::negamax(Position& pos, int depth, int alpha, int beta,
     orderMoves(pos, list, ttMove);
 
     Colour us = pos.sideToMove;
-    bool   anyLegal = false;
-    int    best = -INF_SCORE;
-    Move   bestMove = NULL_MOVE;
-    int    origAlpha = alpha;
+    bool anyLegal = false;
+    int best = -INF_SCORE;
+    Move bestMove = NULL_MOVE;
+    int origAlpha = alpha;
 
     for (int i = 0; i < list.count; i++) {
-        Move    m = list.moves[i];
-        Piece   moving = pos.pieceOn(m.from());
+        Move m = list.moves[i];
+        Piece moving = pos.pieceOn(m.from());
         uint8_t prevC = pos.castlingRights;
-        Square  prevE = pos.enPassantSquare;
-        int     prevH = pos.halfMoveClock;
+        Square prevE = pos.enPassantSquare;
+        int prevH = pos.halfMoveClock;
 
         Piece captured = pos.makeMove(m);
 
